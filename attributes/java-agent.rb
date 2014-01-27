@@ -1,8 +1,9 @@
 #
-# Cookbook Name:: newrelic
+# Cookbook Name:: rackspace_newrelic
 # Attributes:: java-agent
 #
 # Copyright 2012-2013, Escape Studios
+# Copyright 2014, Rackspace, US Inc.
 #
 
 default['newrelic']['https_download'] = 'https://download.newrelic.com/newrelic/java-agent/newrelic-agent/2.21.3/newrelic-agent-2.21.3.jar'

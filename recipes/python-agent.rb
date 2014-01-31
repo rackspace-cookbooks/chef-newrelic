@@ -6,7 +6,7 @@
 # Copyright 2014, Rackspace US Inc.
 #
 
-include_recipe 'python::pip'
+include_recipe 'rackspace_python::pip'
 
 directory node['rackspace_newrelic']['config_path'] do
   action :create
@@ -22,6 +22,7 @@ end
 
 # configure your New Relic license key
 template '/etc/newrelic/newrelic.ini' do
+  cookbook node['rackspace_sudo']['templates_cookbook']['newrelic.ini.python.erb']
   source 'newrelic.ini.python.erb'
   owner 'root'
   group 'root'

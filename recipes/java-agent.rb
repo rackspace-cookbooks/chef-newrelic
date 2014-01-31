@@ -39,6 +39,7 @@ end
 # configure your New Relic license key
 conf_file = node['rackspace_newrelic']['install_dir'] + '/newrelic.yml'
 template conf_file do
+  cookbook node['rackspace_sudo']['templates_cookbook']['newrelic.yml.java.erb']
   source 'newrelic.yml.java.erb'
   owner node['rackspace_newrelic']['app_user']
   group node['rackspace_newrelic']['app_group']

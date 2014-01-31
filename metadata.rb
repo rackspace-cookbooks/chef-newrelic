@@ -17,7 +17,7 @@ supports 'debian'
 supports 'redhat'
 supports 'ubuntu'
 
-depends 'python'
+depends 'rackspace_python'
 depends 'php'
 
 recipe 'rackspace_newrelic', 'Adds the New Relic repository, installs & configures the New Relic server monitor package.'

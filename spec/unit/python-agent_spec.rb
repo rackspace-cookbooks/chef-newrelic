@@ -8,7 +8,7 @@ describe 'rackspace_newrelic::python-agent' do
   end
 
   it 'includes the python::pip recipe' do
-    expect(chef_run).to include_recipe('python::pip')
+    expect(chef_run).to include_recipe('rackspace_python::pip')
   end
 
   it 'creates newrelic config template from newrelic.ini.python.erb' do

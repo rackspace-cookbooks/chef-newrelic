@@ -20,6 +20,7 @@ when 'rhel', 'centos', 'debian', 'ubuntu'
 
   # configure the New Relic license key
   template "#{node['rackspace_newrelic']['config_path']}/nrsysmond.cfg" do
+    cookbook node['rackspace_sudo']['templates_cookbook']['nrsysmond.cfg.erb']
     source 'nrsysmond.cfg.erb'
     owner 'root'
     group node['rackspace_newrelic']['config_file_group']

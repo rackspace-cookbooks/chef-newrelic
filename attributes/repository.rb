@@ -6,4 +6,4 @@
 # Copyright 2014, Rackspace, US Inc.
 #
 
-default['newrelic']['repository_key'] = '548C16BF'
+default['rackspace_newrelic']['repository_key'] = '548C16BF'

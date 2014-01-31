@@ -6,6 +6,6 @@
 # Copyright 2014, Rackspace, US Inc.
 #
 
-default['newrelic']['service_name'] = 'newrelic-sysmond'
-default['newrelic']['config_path'] = '/etc/newrelic'
-default['newrelic']['config_file_group'] = 'newrelic'
+default['rackspace_newrelic']['service_name'] = 'newrelic-sysmond'
+default['rackspace_newrelic']['config_path'] = '/etc/newrelic'
+default['rackspace_newrelic']['config_file_group'] = 'newrelic'

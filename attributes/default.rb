@@ -10,8 +10,8 @@
 # BASIC CONFIG
 ##############
 # license(s)
-default['newrelic']['server_monitoring']['license'] = 'CHANGE_ME'
-default['newrelic']['application_monitoring']['license'] = 'CHANGE_ME'
+default['rackspace_newrelic']['server_monitoring']['license'] = 'CHANGE_ME'
+default['rackspace_newrelic']['application_monitoring']['license'] = 'CHANGE_ME'
 
 ##################
 # ADVANCED CONFIG

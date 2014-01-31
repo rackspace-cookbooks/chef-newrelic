@@ -21,13 +21,16 @@ platforms:
   run_list:
   - recipe[rackspace_apt]
 
-#suites:
-#  - name: default
-#    run_list:
-#      - recipe[rackspace_logrotate::default]
-#  - name: definition
-#    run_list:
-#      - recipe[fake::definition]
-#  - name: global
-#    run_list:
-#      - recipe[rackspace_logrotate::global]
+suites:
+  - name: default
+    run_list:
+      - recipe[rackspace_newrelic::default]
+  - name: java_agent
+    run_list:
+      - recipe[rackspace_newrelic::java-agent]
+  - name: php-agent
+    run_list:
+      - recipe[rackspace_newrelic::php-agent]
+  - name: python-agent
+    run_list:
+      - recipe[rackspace_newrelic::python-agent]

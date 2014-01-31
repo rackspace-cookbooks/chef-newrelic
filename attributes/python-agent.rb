@@ -6,4 +6,4 @@
 # Copyright 2014, Rackspace, US Inc.
 #
 
-default['newrelic']['python_version'] = 'latest'
+default['rackspace_newrelic']['python_version'] = 'latest'

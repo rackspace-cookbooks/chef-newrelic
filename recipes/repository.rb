@@ -6,30 +6,19 @@
 # Copyright 2014, Rackspace, US Inc.
 #
 
-# case node['platform']
-# when 'debian', 'ubuntu', 'redhat', 'centos'
-#   package 'wget'
-# end
-
-case node['platform']
+case node['platform_family']
 when 'debian', 'ubuntu'
   # trust the New Relic GPG Key
   # this step is required to tell apt that you trust the integrity of New Relic's apt repository
-  gpg_key_id = node['newrelic']['repository_key']
-  gpg_key_url = "http://download.newrelic.com/#{gpg_key_id}.gpg"
+  gpg_key_url = "http://download.newrelic.com/#{node['rackspace_newrelic']['repository_key']}.gpg"
 
-#  execute 'newrelic-add-gpg-key' do
-#    command "wget -O - #{gpg_key_url} | apt-key add -"
-#    notifies :run, 'execute[newrelic-apt-get-update]', :immediately
-#    not_if "apt-key list | grep #{gpg_key_id}"
-#  end
-
-  remote_file "#{Chef::Config['file_cache_path']}/#{gpg_key_url}" do
+  remote_file "#{Chef::Config['file_cache_path']}/#{node['rackspace_newrelic']['repository_key']}.gpg" do
     source gpg_key_url
+    action :create
   end
 
-  execute "apt-key add #{Chef::Config['file_cache_path']}/#{gpg_key_url}" do
-    command "apt-key add #{Chef::Config['file_cache_path']}/#{gpg_key_url}"
+  execute "apt-key add #{Chef::Config['file_cache_path']}/#{node['rackspace_newrelic']['repository_key']}.gpg" do
+    command "apt-key add #{Chef::Config['file_cache_path']}/#{node['rackspace_newrelic']['repository_key']}.gpg"
   end
 
   # configure the New Relic apt repository
@@ -38,30 +27,24 @@ when 'debian', 'ubuntu'
     owner 'root'
     group 'root'
     mode 0644
-    notifies :run, 'execute[newrelic-apt-get-update]', :immediately
+    notifies :run, 'execute[apt-get update]', :immediately
     action :create_if_missing
   end
 
   # update the local package list
-  execute 'newrelic-apt-get-update' do
+  execute 'apt-get update' do
     command 'apt-get update'
-    action :nothing
+    action :run
   end
-when 'redhat', 'centos', 'fedora'
+when 'centos', 'rhel'
   # install the newrelic-repo package, which configures a new package repository for yum
-  if node['kernel']['machine'] == 'x86_64'
-    machine = 'x86_64'
-  else
-    machine = 'i386'
-  end
-
-  remote_file "#{Chef::Config['file_cache_path'] || '/tmp'}/newrelic-repo-5-3.noarch.rpm" do
-    source "http://download.newrelic.com/pub/newrelic/el5/#{machine}/newrelic-repo-5-3.noarch.rpm"
+  remote_file "#{Chef::Config['file_cache_path']}/newrelic-repo-5-3.noarch.rpm" do
+    source 'http://download.newrelic.com/pub/newrelic/el5/x86_64/newrelic-repo-5-3.noarch.rpm'
     action :create_if_missing
   end
 
   package 'newrelic-repo' do
-    source "#{Chef::Config['file_cache_path'] || '/tmp'}/newrelic-repo-5-3.noarch.rpm"
+    source "#{Chef::Config['file_cache_path']}/newrelic-repo-5-3.noarch.rpm"
     provider Chef::Provider::Package::Rpm
     action :install
   end

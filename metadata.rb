@@ -12,6 +12,11 @@ end
 
 recommends 'curl'
 
+supports 'centos'
+supports 'debian'
+supports 'redhat'
+supports 'ubuntu'
+
 depends 'python'
 depends 'php'
 

@@ -13,7 +13,7 @@ directory node['rackspace_newrelic']['config_path'] do
 end
 
 # install latest python agent
-python_pip 'newrelic' do
+rackspace_python_pip 'newrelic' do
   action :install
   if node['rackspace_newrelic']['python_version'] != 'latest'
     version node['rackspace_newrelic']['python_version']

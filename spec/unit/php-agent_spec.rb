@@ -8,7 +8,7 @@ describe 'rackspace_newrelic::php-agent' do
   end
 
   it 'installs the newrelic-php5 package' do
-    expect(chef_run).to install_package('newrelic-php5')
+    expect(chef_run).to upgrade_package('newrelic-php5')
   end
 
   # I don't think we can use this since the notify is set to :nothing

@@ -7,7 +7,7 @@ describe 'rackspace_newrelic::python-agent' do
     stub_command("/usr/bin/python -c 'import setuptools'").and_return(true)
   end
 
-  it 'includes the python::pip recipe' do
+  it 'includes the rackspace_python::pip recipe' do
     expect(chef_run).to include_recipe('rackspace_python::pip')
   end
 

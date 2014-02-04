@@ -22,7 +22,7 @@ end
 
 # configure your New Relic license key
 template '/etc/newrelic/newrelic.ini' do
-  cookbook node['rackspace_sudo']['templates_cookbook']['newrelic.ini.python.erb']
+  cookbook node['rackspace_newrelic']['templates_cookbook']['newrelic.ini.python.erb']
   source 'newrelic.ini.python.erb'
   owner 'root'
   group 'root'

@@ -13,11 +13,11 @@
 default['rackspace_newrelic']['server_monitoring']['license'] = 'CHANGE_ME'
 default['rackspace_newrelic']['application_monitoring']['license'] = 'CHANGE_ME'
 
-default['rackspace_sudo']['templates_cookbook']['newrelic.cfg.erb'] = 'rackspace_newrelic'
-default['rackspace_sudo']['templates_cookbook']['nrsysmond.cfg.erb'] = 'rackspace_newrelic'
-default['rackspace_sudo']['templates_cookbook']['newrelic.ini.php.erb'] = 'rackspace_newrelic'
-default['rackspace_sudo']['templates_cookbook']['newrelic.yml.java.erb'] = 'rackspace_newrelic'
-default['rackspace_sudo']['templates_cookbook']['newrelic.ini.python.erb'] = 'rackspace_newrelic'
+default['rackspace_newrelic']['templates_cookbook']['newrelic.cfg.erb'] = 'rackspace_newrelic'
+default['rackspace_newrelic']['templates_cookbook']['nrsysmond.cfg.erb'] = 'rackspace_newrelic'
+default['rackspace_newrelic']['templates_cookbook']['newrelic.ini.php.erb'] = 'rackspace_newrelic'
+default['rackspace_newrelic']['templates_cookbook']['newrelic.yml.java.erb'] = 'rackspace_newrelic'
+default['rackspace_newrelic']['templates_cookbook']['newrelic.ini.python.erb'] = 'rackspace_newrelic'
 
 ##################
 # ADVANCED CONFIG

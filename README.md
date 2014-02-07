@@ -18,7 +18,7 @@ Make sure you run Chef >= 0.10.0.
 ## Cookbooks:
 
 This cookbook depends on the following cookbooks:
-* php
+* rackspace_php
 * rackspace_python
 
 This cookbook recommends on the following cookbooks:

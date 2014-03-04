@@ -18,6 +18,6 @@ describe 'rackspace_newrelic::php-agent' do
   end
 
   it 'creates newrelic php ini from template newrelic.ini.php.erb' do
-    expect(chef_run).to render_file(chef_run.node['rackspace_php']['ext_conf_dir'] + '/newrelic.ini')
+    expect(chef_run).to render_file("#{chef_run.node['rackspace_php']['ext_conf_dir']}/newrelic.ini")
   end
 end

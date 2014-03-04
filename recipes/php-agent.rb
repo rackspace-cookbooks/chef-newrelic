@@ -34,7 +34,7 @@ end
 
 # configure New Relic INI file and set the daemon related options (documented at /usr/lib/newrelic-php5/scripts/newrelic.ini.template)
 # and restart the web server in order to pick up the new settings
-template node['rackspace_php']['ext_conf_dir'] + '/newrelic.ini' do
+template "#{node['rackspace_php']['ext_conf_dir']}/newrelic.ini" do
   cookbook node['rackspace_newrelic']['templates_cookbook']['newrelic.ini.php.erb']
   source 'newrelic.ini.php.erb'
   owner 'root'

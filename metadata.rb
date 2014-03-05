@@ -1,23 +1,27 @@
-name             "newrelic"
-maintainer       "Escape Studios"
-maintainer_email "dev@escapestudios.com"
-license          "MIT"
-description      "Installs/Configures New Relic"
+name             'rackspace_newrelic'
+maintainer       'Rackspace, US Inc.'
+maintainer_email 'rackspace-cookbooks@rackspace.com'
+license          'MIT'
+description      'Installs/Configures New Relic'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.5.5"
+version          '1.0.1'
 
-%w{ debian ubuntu redhat centos fedora scientific amazon windows smartos }.each do |os|
-supports os
+%w{ debian ubuntu redhat centos }.each do |os|
+  supports os
 end
 
-recommends "php"
-recommends "python"
-recommends "ms_dotnet4"
-recommends "curl"
+recommends 'curl'
 
-recipe "newrelic", "Adds the New Relic repository, installs & configures the New Relic server monitor package."
-recipe "newrelic::repository", "Adds the New Relic repository."
-recipe "newrelic::server-monitor", "Installs & configures the New Relic server monitor package."
-recipe "newrelic::php-agent", "Installs the New Relic PHP agent."
-recipe "newrelic::python-agent", "Installs the New Relic Python agent."
-recipe "newrelic::dotnet", "Installs New Relic .NET Agent"
+supports 'centos'
+supports 'debian'
+supports 'redhat'
+supports 'ubuntu'
+
+depends 'rackspace_python', '~> 2.0'
+depends 'rackspace_php', '~> 2.0'
+
+recipe 'rackspace_newrelic', 'Adds the New Relic repository, installs & configures the New Relic server monitor package.'
+recipe 'rackspace_newrelic::repository', 'Adds the New Relic repository.'
+recipe 'rackspace_newrelic::server-monitor', 'Installs & configures the New Relic server monitor package.'
+recipe 'rackspace_newrelic::php-agent', 'Installs the New Relic PHP agent.'
+recipe 'rackspace_newrelic::python-agent', 'Installs the New Relic Python agent.'

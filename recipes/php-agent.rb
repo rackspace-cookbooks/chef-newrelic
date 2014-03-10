@@ -9,29 +9,6 @@
 include_recipe 'rackspace_newrelic::repository'
 include_recipe 'rackspace_php'
 
-# install/update latest php agent
-package 'newrelic-php5' do
-  action :upgrade
-  notifies :run, 'execute[newrelic-install]', :immediately
-end
-
-package node['rackspace_newrelic']['web_server']['service_name']
-
-service node['rackspace_newrelic']['web_server']['service_name'] do
-  supports status: true, start: true, stop: true, restart: true
-end
-
-service 'newrelic-daemon' do
-  supports status: true, start: true, stop: true, restart: true
-end
-
-# run newrelic-install
-execute 'newrelic-install' do
-  command 'newrelic-install install'
-  action :nothing
-  notifies :restart, "service[#{node['rackspace_newrelic']['web_server']['service_name']}]", :delayed
-end
-
 # configure New Relic INI file and set the daemon related options (documented at /usr/lib/newrelic-php5/scripts/newrelic.ini.template)
 # and restart the web server in order to pick up the new settings
 template "#{node['rackspace_php']['ext_conf_dir']}/newrelic.ini" do
@@ -78,6 +55,29 @@ template "#{node['rackspace_php']['ext_conf_dir']}/newrelic.ini" do
     webtransaction_name_files: node['rackspace_newrelic']['application_monitoring']['webtransaction']['name']['files']
   )
   action :create
+  notifies :restart, "service[#{node['rackspace_newrelic']['web_server']['service_name']}]", :delayed
+end
+
+# install/update latest php agent
+package 'newrelic-php5' do
+  action :upgrade
+  # notifies :run, 'execute[newrelic-install]', :immediately
+end
+
+package node['rackspace_newrelic']['web_server']['service_name']
+
+service node['rackspace_newrelic']['web_server']['service_name'] do
+  supports status: true, start: true, stop: true, restart: true
+end
+
+service 'newrelic-daemon' do
+  supports status: true, start: true, stop: true, restart: true
+end
+
+# run newrelic-install
+execute 'newrelic-install' do
+  command 'newrelic-install install'
+  action :nothing
   notifies :restart, "service[#{node['rackspace_newrelic']['web_server']['service_name']}]", :delayed
 end
 

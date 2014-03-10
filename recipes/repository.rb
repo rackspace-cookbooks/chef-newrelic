@@ -31,7 +31,6 @@ when 'debian', 'ubuntu'
     action :create_if_missing
   end
 
-  # update the local package list
   execute 'apt-get update' do
     command 'apt-get update'
     action :run

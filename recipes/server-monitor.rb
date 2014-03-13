@@ -15,7 +15,7 @@ directory node['rackspace_newrelic']['config_path'] do
 end
 
 case node['platform_family']
-when 'rhel', 'centos', 'debian', 'ubuntu'
+when 'rhel', 'debian'
   package node['rackspace_newrelic']['web_server']['service_name']
 
   # configure the New Relic license key

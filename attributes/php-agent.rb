@@ -9,9 +9,9 @@
 default['rackspace_newrelic']['startup_mode'] = 'agent'
 
 case node['platform_family']
-when 'debian', 'ubuntu'
+when 'debian'
   default['rackspace_newrelic']['web_server']['service_name'] = 'apache2'
-when 'rhel', 'centos'
+when 'rhel'
   default['rackspace_newrelic']['web_server']['service_name'] = 'httpd'
 else
   default['rackspace_newrelic']['web_server']['service_name'] = 'apache2'

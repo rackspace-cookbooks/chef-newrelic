@@ -35,7 +35,7 @@ when 'debian', 'ubuntu'
     command 'apt-get update'
     action :run
   end
-when 'centos', 'rhel'
+when 'rhel'
   # install the newrelic-repo package, which configures a new package repository for yum
   remote_file "#{Chef::Config['file_cache_path']}/newrelic-repo-5-3.noarch.rpm" do
     source 'http://download.newrelic.com/pub/newrelic/el5/x86_64/newrelic-repo-5-3.noarch.rpm'

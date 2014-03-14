@@ -33,7 +33,7 @@ when 'debian', 'ubuntu'
 
   execute 'apt-get update' do
     command 'apt-get update'
-    action :run
+    action :nothing
   end
 when 'rhel'
   # install the newrelic-repo package, which configures a new package repository for yum

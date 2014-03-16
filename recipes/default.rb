@@ -7,6 +7,6 @@
 #
 
 include_recipe 'rackspace_newrelic::repository'
-if ['rackspace_newrelic']['web_server']['enabled'] == true
+if node['rackspace_newrelic']['web_server']['enabled'] == true
   include_recipe 'rackspace_newrelic::server-monitor'
 end

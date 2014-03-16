@@ -12,18 +12,9 @@ describe 'rackspace_newrelic::server-monitor' do
       expect(chef_run).to create_group(chef_run.node['rackspace_newrelic']['config_file_group'])
     end
 
-    it 'installs package Apache package' do
-      expect(chef_run).to install_package('apache2')
-    end
-
     it 'creates newrelic config template from nrsysmond.cfg.erb' do
       expect(chef_run).to render_file(chef_run.node['rackspace_newrelic']['config_path'] + '/nrsysmond.cfg')
     end
-
-    it 'starts the Apache service' do
-      expect(chef_run).to start_service('apache2')
-    end
-
   end
 
   context 'Debian 7' do
@@ -37,16 +28,8 @@ describe 'rackspace_newrelic::server-monitor' do
       expect(chef_run).to create_group(chef_run.node['rackspace_newrelic']['config_file_group'])
     end
 
-    it 'installs package Apache package' do
-      expect(chef_run).to install_package('apache2')
-    end
-
     it 'creates newrelic config template from nrsysmond.cfg.erb' do
       expect(chef_run).to render_file(chef_run.node['rackspace_newrelic']['config_path'] + '/nrsysmond.cfg')
-    end
-
-    it 'starts the Apache service' do
-      expect(chef_run).to start_service('apache2')
     end
   end
 
@@ -61,16 +44,8 @@ describe 'rackspace_newrelic::server-monitor' do
       expect(chef_run).to create_group(chef_run.node['rackspace_newrelic']['config_file_group'])
     end
 
-    it 'installs package Apache package' do
-      expect(chef_run).to install_package('httpd')
-    end
-
     it 'creates newrelic config template from nrsysmond.cfg.erb' do
       expect(chef_run).to render_file(chef_run.node['rackspace_newrelic']['config_path'] + '/nrsysmond.cfg')
-    end
-
-    it 'starts the Apache service' do
-      expect(chef_run).to start_service('httpd')
     end
   end
 
@@ -85,16 +60,8 @@ describe 'rackspace_newrelic::server-monitor' do
       expect(chef_run).to create_group(chef_run.node['rackspace_newrelic']['config_file_group'])
     end
 
-    it 'installs package Apache package' do
-      expect(chef_run).to install_package('httpd')
-    end
-
     it 'creates newrelic config template from nrsysmond.cfg.erb' do
       expect(chef_run).to render_file(chef_run.node['rackspace_newrelic']['config_path'] + '/nrsysmond.cfg')
-    end
-
-    it 'starts the Apache service' do
-      expect(chef_run).to start_service('httpd')
     end
   end
 end

@@ -35,11 +35,11 @@ template "#{node['rackspace_newrelic']['config_path']}/nrsysmond.cfg" do
   )
 end
 
-package "#{node['rackspace_newrelic']['service_name']}" do
+package node['rackspace_newrelic']['service_name'] do
   action :install
 end
 
-service "#{node['rackspace_newrelic']['service_name']}" do
+service node['rackspace_newrelic']['service_name'] do
   supports status: true, restart: true, reload: true, condrestart: true
   action [:enable, :start]
 end

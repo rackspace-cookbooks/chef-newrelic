@@ -19,6 +19,14 @@ describe 'rackspace_newrelic::server-monitor' do
     it 'installs the package newrelic-sysmond' do
       expect(chef_run).to install_package('newrelic-sysmond')
     end
+  end
+
+  context 'with license' do
+    let(:chef_run) do 
+      ChefSpec::Runner.new do |node|
+        node.set['rackspace_newrelic']['server_monitoring']['license'] == 'CHANGED'
+      end.converge(described_recipe)
+    end
 
     it 'starts the newrelic-sysmond service' do
       expect(chef_run).to start_service('newrelic-sysmond')

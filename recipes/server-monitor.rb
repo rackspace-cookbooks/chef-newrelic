@@ -39,7 +39,10 @@ package node['rackspace_newrelic']['service_name'] do
   action :install
 end
 
-service node['rackspace_newrelic']['service_name'] do
-  supports status: true, restart: true, reload: true, condrestart: true
-  action [:enable, :start]
+# This is a bit of a hack to get around starting the service in testing
+unless node['rackspace_newrelic']['server_monitoring']['license'] == 'CHANGE_ME'
+  service node['rackspace_newrelic']['service_name'] do
+    supports status: true, restart: true, reload: true, condrestart: true
+    action [:enable, :start]
+  end
 end

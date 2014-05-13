@@ -22,7 +22,7 @@ describe 'rackspace_newrelic::server-monitor' do
   end
 
   context 'with license' do
-    let(:chef_run) do 
+    let(:chef_run) do
       ChefSpec::Runner.new do |node|
         node.set['rackspace_newrelic']['server_monitoring']['license'] == 'CHANGED'
       end.converge(described_recipe)

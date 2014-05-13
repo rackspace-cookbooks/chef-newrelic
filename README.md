@@ -139,13 +139,13 @@ Usage
 =====
 
 1)
-include `recipe[newrelic]` in a run list to implicly run `recipe[newrelic:repository]` and `recipe[newrelic::server-monitor]`
+include `recipe[rackspace_newrelic]` in a run list to implicly run `recipe[rackspace_newrelic:repository]` and `recipe[rackspace_newrelic::server-monitor]`
 - OR -
 include the bits and pieces explicitly in a run list:
-`recipe[newrelic::repository]`
-`recipe[newrelic::server-monitor]`
-`recipe[newrelic::php-agent]`
-`recipe[newrelic::python-agent]`
+`recipe[rackspace_newrelic::repository]`
+`recipe[rackspace_newrelic::server-monitor]`
+`recipe[rackspace_newrelic::php-agent]`
+`recipe[rackspace_newrelic::python-agent]`
 
 2)
 	change the `node['rackspace_newrelic']['server_monitoring']['license']` and `node['rackspace_newrelic']['application_monitoring']['license']` attributes to your New Relic license keys

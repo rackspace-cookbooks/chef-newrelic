@@ -4,9 +4,9 @@ maintainer_email 'rackspace-cookbooks@rackspace.com'
 license          'MIT'
 description      'Installs/Configures New Relic'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.0.5'
+version          '1.0.6'
 
-%w{ debian ubuntu redhat centos }.each do |os|
+%w( debian ubuntu redhat centos ).each do |os|
   supports os
 end
 

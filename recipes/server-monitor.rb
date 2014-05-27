@@ -6,6 +6,10 @@
 # Copyright 2014, Rackspace, US Inc.
 #
 
+package node['rackspace_newrelic']['service_name'] do
+  action :install
+end
+
 group node['rackspace_newrelic']['config_file_group'] do
   action :create
 end
@@ -33,4 +37,11 @@ template "#{node['rackspace_newrelic']['config_path']}/nrsysmond.cfg" do
   collector_host: node['rackspace_newrelic']['server_monitoring']['collector_host'],
   timeout: node['rackspace_newrelic']['server_monitoring']['timeout']
   )
+end
+
+# This is a bit of a hack to get around starting the service in testing
+service node['rackspace_newrelic']['service_name'] do
+  supports status: true, restart: true, reload: true, condrestart: true
+  action [:enable, :start]
+  not_if { node['rackspace_newrelic']['server_monitoring']['license'] == 'CHANGE_ME' }
 end

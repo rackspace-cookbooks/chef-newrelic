@@ -16,9 +16,6 @@ describe 'rackspace_newrelic::repository' do
       expect(chef_run).to create_remote_file_if_missing('/etc/apt/sources.list.d/newrelic.list')
     end
 
-    it 'runs "apt-get update"' do
-      expect(chef_run).to run_execute('apt-get update')
-    end
   end
 
   context 'Debian 7' do
@@ -36,9 +33,6 @@ describe 'rackspace_newrelic::repository' do
       expect(chef_run).to create_remote_file_if_missing('/etc/apt/sources.list.d/newrelic.list')
     end
 
-    it 'runs "apt-get update"' do
-      expect(chef_run).to run_execute('apt-get update')
-    end
   end
 
   context 'CentOS 6' do
